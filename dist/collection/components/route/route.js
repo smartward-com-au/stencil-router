@@ -255,9 +255,9 @@ export class Route {
     },
     "routeViewsUpdated": {
       "type": "unknown",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
-        "original": "(options: RouteViewOptions) => void",
+        "original": "(\n    options: RouteViewOptions\n  ) => void",
         "resolved": "((options: RouteViewOptions) => void) | undefined",
         "references": {
           "RouteViewOptions": {

@@ -37,7 +37,9 @@ export class Route implements ComponentInterface {
   @Prop() exact: boolean = false;
   @Prop() routeRender?: (props: RouteRenderProps) => any;
   @Prop() scrollTopOffset?: number;
-  @Prop() routeViewsUpdated?: (options: RouteViewOptions) => void;
+  @Prop({ mutable: true }) routeViewsUpdated?: (
+    options: RouteViewOptions
+  ) => void;
 
   @Prop({ mutable: true }) location?: LocationSegments;
   @Prop({ mutable: true }) history?: RouterHistory;

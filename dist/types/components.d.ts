@@ -21,7 +21,9 @@ export namespace Components {
         "location"?: LocationSegments;
         "match": MatchResults | null;
         "routeRender"?: (props: RouteRenderProps) => any;
-        "routeViewsUpdated"?: (options: RouteViewOptions) => void;
+        "routeViewsUpdated"?: (
+    options: RouteViewOptions
+  ) => void;
         "scrollTopOffset"?: number;
         "url"?: string | string[];
     }
@@ -150,7 +152,9 @@ declare namespace LocalJSX {
         "location"?: LocationSegments;
         "match"?: MatchResults | null;
         "routeRender"?: (props: RouteRenderProps) => any;
-        "routeViewsUpdated"?: (options: RouteViewOptions) => void;
+        "routeViewsUpdated"?: (
+    options: RouteViewOptions
+  ) => void;
         "scrollTopOffset"?: number;
         "url"?: string | string[];
     }
