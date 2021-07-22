@@ -1,20 +1,20 @@
-import { Component, Prop, Element, Watch } from '@stencil/core';
-import ActiveRouter from '../../global/active-router';
+import { Component, Prop, Element, Watch, } from "@stencil/core";
+import ActiveRouter from "../../global/active-router";
 /**
-  * Updates the document title when found.
-  *
-  * @name RouteTitle
-  * @description
+ * Updates the document title when found.
+ *
+ * @name RouteTitle
+ * @description
  */
 export class RouteTitle {
   constructor() {
-    this.titleSuffix = '';
-    this.pageTitle = '';
+    this.titleSuffix = "";
+    this.pageTitle = "";
   }
   updateDocumentTitle() {
     const el = this.el;
     if (el.ownerDocument) {
-      el.ownerDocument.title = `${this.pageTitle}${this.titleSuffix || ''}`;
+      el.ownerDocument.title = `${this.pageTitle}${this.titleSuffix || ""}`;
     }
   }
   componentWillLoad() {
@@ -24,7 +24,7 @@ export class RouteTitle {
   static get properties() { return {
     "titleSuffix": {
       "type": "string",
-      "mutable": false,
+      "mutable": true,
       "complexType": {
         "original": "string",
         "resolved": "string",
@@ -38,7 +38,7 @@ export class RouteTitle {
       },
       "attribute": "title-suffix",
       "reflect": false,
-      "defaultValue": "''"
+      "defaultValue": "\"\""
     },
     "pageTitle": {
       "type": "string",
@@ -56,7 +56,7 @@ export class RouteTitle {
       },
       "attribute": "page-title",
       "reflect": false,
-      "defaultValue": "''"
+      "defaultValue": "\"\""
     }
   }; }
   static get elementRef() { return "el"; }
@@ -65,6 +65,4 @@ export class RouteTitle {
       "methodName": "updateDocumentTitle"
     }]; }
 }
-ActiveRouter.injectProps(RouteTitle, [
-  'titleSuffix',
-]);
+ActiveRouter.injectProps(RouteTitle, ["titleSuffix"]);

@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-eaad315e.js');
-const matchPath = require('./match-path-acf74873.js');
+const matchPath = require('./match-path-03941a21.js');
 const activeRouter = require('./active-router-05f0f1fd.js');
-require('./location-utils-2d643b4e.js');
+require('./location-utils-24a4ec63.js');
 
 const routeCss = "stencil-route.inactive{display:none}";
 

@@ -1,6 +1,4 @@
-'use strict';
-
-const locationUtils = require('./location-utils-2d643b4e.js');
+import { v as valueEqual } from './location-utils-afbb7c0c.js';
 
 /**
  * TS adaption of https://github.com/pillarjs/path-to-regexp/blob/master/index.js
@@ -272,8 +270,7 @@ const matchesAreEqual = (a, b) => {
   return a && b &&
     a.path === b.path &&
     a.url === b.url &&
-    locationUtils.valueEqual(a.params, b.params);
+    valueEqual(a.params, b.params);
 };
 
-exports.matchPath = matchPath;
-exports.matchesAreEqual = matchesAreEqual;
+export { matchesAreEqual as a, matchPath as m };

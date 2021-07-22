@@ -6,7 +6,6 @@ import {
   ComponentInterface,
   h,
 } from "@stencil/core";
-import { QueueApi } from "@stencil/core/dist/declarations";
 import {
   LocationSegments,
   MatchResults,

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-eaad315e.js');
-const locationUtils = require('./location-utils-2d643b4e.js');
+const locationUtils = require('./location-utils-24a4ec63.js');
 const domUtils = require('./dom-utils-3243619e.js');
 const activeRouter = require('./active-router-05f0f1fd.js');
 

@@ -4,8 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-eaad315e.js');
 const activeRouter = require('./active-router-05f0f1fd.js');
-const matchPath = require('./match-path-acf74873.js');
-require('./location-utils-2d643b4e.js');
+const matchPath = require('./match-path-03941a21.js');
+require('./location-utils-24a4ec63.js');
 
 const getUniqueId = () => {
   return ((Math.random() * 10e16).toString().match(/.{4}/g) || []).join("-");

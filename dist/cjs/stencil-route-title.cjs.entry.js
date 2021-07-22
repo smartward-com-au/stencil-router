@@ -8,13 +8,13 @@ const activeRouter = require('./active-router-05f0f1fd.js');
 const RouteTitle = class {
   constructor(hostRef) {
     index.registerInstance(this, hostRef);
-    this.titleSuffix = '';
-    this.pageTitle = '';
+    this.titleSuffix = "";
+    this.pageTitle = "";
   }
   updateDocumentTitle() {
     const el = this.el;
     if (el.ownerDocument) {
-      el.ownerDocument.title = `${this.pageTitle}${this.titleSuffix || ''}`;
+      el.ownerDocument.title = `${this.pageTitle}${this.titleSuffix || ""}`;
     }
   }
   componentWillLoad() {
@@ -25,8 +25,6 @@ const RouteTitle = class {
     "pageTitle": ["updateDocumentTitle"]
   }; }
 };
-activeRouter.ActiveRouter.injectProps(RouteTitle, [
-  'titleSuffix',
-]);
+activeRouter.ActiveRouter.injectProps(RouteTitle, ["titleSuffix"]);
 
 exports.stencil_route_title = RouteTitle;

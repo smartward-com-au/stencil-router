@@ -1,25 +1,31 @@
-import { Component, Prop, Element, Watch, ComponentInterface } from '@stencil/core';
-import ActiveRouter from '../../global/active-router';
+import {
+  Component,
+  Prop,
+  Element,
+  Watch,
+  ComponentInterface,
+} from "@stencil/core";
+import ActiveRouter from "../../global/active-router";
 
 /**
-  * Updates the document title when found.
-  *
-  * @name RouteTitle
-  * @description
+ * Updates the document title when found.
+ *
+ * @name RouteTitle
+ * @description
  */
 @Component({
-  tag: 'stencil-route-title'
+  tag: "stencil-route-title",
 })
 export class RouteTitle implements ComponentInterface {
   @Element() el!: HTMLElement;
-  @Prop() titleSuffix: string = '';
-  @Prop() pageTitle: string = '';
+  @Prop({ mutable: true }) titleSuffix: string = "";
+  @Prop() pageTitle: string = "";
 
-  @Watch('pageTitle')
+  @Watch("pageTitle")
   updateDocumentTitle() {
     const el = this.el;
     if (el.ownerDocument) {
-      el.ownerDocument.title = `${this.pageTitle}${this.titleSuffix || ''}`;
+      el.ownerDocument.title = `${this.pageTitle}${this.titleSuffix || ""}`;
     }
   }
 
@@ -28,6 +34,4 @@ export class RouteTitle implements ComponentInterface {
   }
 }
 
-ActiveRouter.injectProps(RouteTitle, [
-  'titleSuffix',
-]);
+ActiveRouter.injectProps(RouteTitle, ["titleSuffix"]);

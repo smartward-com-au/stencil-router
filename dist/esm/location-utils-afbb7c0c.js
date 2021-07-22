@@ -60,7 +60,7 @@ const parseQueryString = (query) => {
 };
 
 const isAbsolute = (pathname) => {
-  return pathname.charAt(0) === '/';
+  return pathname.charAt(0) === "/";
 };
 const createKey = (keyLength) => {
   return Math.random().toString(36).substr(2, keyLength);
@@ -73,11 +73,11 @@ const spliceOne = (list, index) => {
   list.pop();
 };
 // This implementation is based heavily on node's url.parse
-const resolvePathname = (to, from = '') => {
-  let fromParts = from && from.split('/') || [];
+const resolvePathname = (to, from = "") => {
+  let fromParts = (from && from.split("/")) || [];
   let hasTrailingSlash;
   let up = 0;
-  const toParts = to && to.split('/') || [];
+  const toParts = (to && to.split("/")) || [];
   const isToAbs = to && isAbsolute(to);
   const isFromAbs = from && isAbsolute(from);
   const mustEndAbs = isToAbs || isFromAbs;
@@ -91,21 +91,21 @@ const resolvePathname = (to, from = '') => {
     fromParts = fromParts.concat(toParts);
   }
   if (!fromParts.length) {
-    return '/';
+    return "/";
   }
   if (fromParts.length) {
     const last = fromParts[fromParts.length - 1];
-    hasTrailingSlash = (last === '.' || last === '..' || last === '');
+    hasTrailingSlash = last === "." || last === ".." || last === "";
   }
   else {
     hasTrailingSlash = false;
   }
   for (let i = fromParts.length; i >= 0; i--) {
     const part = fromParts[i];
-    if (part === '.') {
+    if (part === ".") {
       spliceOne(fromParts, i);
     }
-    else if (part === '..') {
+    else if (part === "..") {
       spliceOne(fromParts, i);
       up++;
     }
@@ -116,15 +116,17 @@ const resolvePathname = (to, from = '') => {
   }
   if (!mustEndAbs) {
     for (; up--; up) {
-      fromParts.unshift('..');
+      fromParts.unshift("..");
     }
   }
-  if (mustEndAbs && fromParts[0] !== '' && (!fromParts[0] || !isAbsolute(fromParts[0]))) {
-    fromParts.unshift('');
+  if (mustEndAbs &&
+    fromParts[0] !== "" &&
+    (!fromParts[0] || !isAbsolute(fromParts[0]))) {
+    fromParts.unshift("");
   }
-  let result = fromParts.join('/');
-  if (hasTrailingSlash && result.substr(-1) !== '/') {
-    result += '/';
+  let result = fromParts.join("/");
+  if (hasTrailingSlash && result.substr(-1) !== "/") {
+    result += "/";
   }
   return result;
 };
@@ -136,16 +138,18 @@ const valueEqual = (a, b) => {
     return false;
   }
   if (Array.isArray(a)) {
-    return Array.isArray(b) && a.length === b.length && a.every((item, index) => {
-      return valueEqual(item, b[index]);
-    });
+    return (Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((item, index) => {
+        return valueEqual(item, b[index]);
+      }));
   }
   const aType = typeof a;
   const bType = typeof b;
   if (aType !== bType) {
     return false;
   }
-  if (aType === 'object') {
+  if (aType === "object") {
     const aValue = a.valueOf();
     const bValue = b.valueOf();
     if (aValue !== a || bValue !== b) {
@@ -163,15 +167,15 @@ const valueEqual = (a, b) => {
   return false;
 };
 const locationsAreEqual = (a, b) => {
-  return a.pathname === b.pathname &&
+  return (a.pathname === b.pathname &&
     a.search === b.search &&
     a.hash === b.hash &&
     a.key === b.key &&
-    valueEqual(a.state, b.state);
+    valueEqual(a.state, b.state));
 };
 const createLocation = (path, state, key, currentLocation) => {
   let location;
-  if (typeof path === 'string') {
+  if (typeof path === "string") {
     // Two-arg form: push(path, state)
     location = parsePath(path);
     if (state !== undefined) {
@@ -180,12 +184,13 @@ const createLocation = (path, state, key, currentLocation) => {
   }
   else {
     // One-arg form: push(location)
-    location = Object.assign({ pathname: '' }, path);
-    if (location.search && location.search.charAt(0) !== '?') {
-      location.search = '?' + location.search;
+    location = Object.assign({}, path);
+    location.pathname = location.pathname || "";
+    if (location.search && location.search.charAt(0) !== "?") {
+      location.search = "?" + location.search;
     }
-    if (location.hash && location.hash.charAt(0) !== '#') {
-      location.hash = '#' + location.hash;
+    if (location.hash && location.hash.charAt(0) !== "#") {
+      location.hash = "#" + location.hash;
     }
     if (state !== undefined && location.state === undefined) {
       location.state = state;
@@ -196,8 +201,10 @@ const createLocation = (path, state, key, currentLocation) => {
   }
   catch (e) {
     if (e instanceof URIError) {
-      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' +
-        'This is likely caused by an invalid percent-encoding.');
+      throw new URIError('Pathname "' +
+        location.pathname +
+        '" could not be decoded. ' +
+        "This is likely caused by an invalid percent-encoding.");
     }
     else {
       throw e;
@@ -209,17 +216,17 @@ const createLocation = (path, state, key, currentLocation) => {
     if (!location.pathname) {
       location.pathname = currentLocation.pathname;
     }
-    else if (location.pathname.charAt(0) !== '/') {
+    else if (location.pathname.charAt(0) !== "/") {
       location.pathname = resolvePathname(location.pathname, currentLocation.pathname);
     }
   }
   else {
     // When there is no prior location and pathname is empty, set it to /
     if (!location.pathname) {
-      location.pathname = '/';
+      location.pathname = "/";
     }
   }
-  location.query = parseQueryString(location.search || '');
+  location.query = parseQueryString(location.search || "");
   return location;
 };
 

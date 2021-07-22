@@ -1,9 +1,9 @@
-import { ComponentInterface } from '../../stencil-public-runtime';
+import { ComponentInterface } from "../../stencil-public-runtime";
 /**
-  * Updates the document title when found.
-  *
-  * @name RouteTitle
-  * @description
+ * Updates the document title when found.
+ *
+ * @name RouteTitle
+ * @description
  */
 export declare class RouteTitle implements ComponentInterface {
   el: HTMLElement;

@@ -1,4 +1,4 @@
-import { LocationSegments } from '../global/interfaces';
+import { LocationSegments } from "../global/interfaces";
 export declare const createKey: (keyLength: number) => string;
 export declare const resolvePathname: (to: string, from?: string) => string;
 export declare const valueEqual: (a: any, b: any) => boolean;
