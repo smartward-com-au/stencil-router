@@ -1,0 +1,26 @@
+{
+  "entries": [
+    "./components/async-content/async-content.js",
+    "./components/prompt/prompt.js",
+    "./components/redirect/redirect.js",
+    "./components/route/route.js",
+    "./components/route-link/route-link.js",
+    "./components/route-title/route-title.js",
+    "./components/router/router.js",
+    "./components/switch/switch.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "2.6.0",
+    "typescriptVersion": "4.2.3"
+  },
+  "collections": [
+    {
+      "name": "@stencil/state-tunnel",
+      "tags": [
+        "context-consumer"
+      ]
+    }
+  ],
+  "bundles": []
+}
